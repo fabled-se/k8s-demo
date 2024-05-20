@@ -1,0 +1,15 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: demo
+agents: 2
+options:
+  k3s:
+    nodeLabels:
+      - label: pool=app # label node to match my service
+        nodeFilters:
+          - agent:*
+ports:
+  - port: 8080:30080 # mapping node port to my localhost port
+    nodeFilters:
+      - agent:*

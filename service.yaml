@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kooobernettes
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 8080
+    nodePort: 30080 #Range 30000-32767
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: kooobernettes
+  type: NodePort
