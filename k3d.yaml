@@ -10,6 +10,9 @@ options:
         nodeFilters:
           - agent:*
 ports:
-  - port: 8080:30080 # mapping node port to my localhost port
+  # - port: 8080:30080 # mapping node port to my localhost port
+  #   nodeFilters:
+  #     - agent:*
+  - port: 80:80
     nodeFilters:
-      - agent:*
+      - loadbalancer

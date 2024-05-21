@@ -6,6 +6,13 @@ Refer to Kubernetes Documentation for more details: https://kubernetes.io/docs
     Kubectl
     docker/podman
     
+# Use
+Update k3d.yaml with your desired configuration and create a cluster:
+k3d cluster create --config k3d.yaml
+
+Modify and apply resources:
+Kubectl apply -f <resource.yaml>
+
 
 # Resources
 
@@ -33,7 +40,9 @@ It is implemented as a Kubernetes API resource and a controller and periodically
     Delete: kubectl delete <resource>
     Logs: kubectl log <pod-name>
     Exec: kubectl exec -it <pod-name> -- /bin/sh (command)
-    
+    list all resources in k8s (use with responsability): kubectl api-resources --verbs=list --namespaced -o name \
+| xargs -n 1 kubectl get --show-kind --ignore-not-found -l <label>=<value> -n <namespace>
+
 ## Troubleshoot
 Check your service status by describing the pod and checking logs
     
